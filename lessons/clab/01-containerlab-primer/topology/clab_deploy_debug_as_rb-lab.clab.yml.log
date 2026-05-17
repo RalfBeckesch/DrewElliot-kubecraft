@@ -1,0 +1,243 @@
+2026/05/16 16:00:25 DEBU Env: CLAB_VERSION_CHECK=
+16:00:25 DEBU Changed running UIDs to UID: 1000 GID: 1000
+16:00:25 DEBU Dropped root privileges
+16:00:25 DEBU trying to find topology files automatically
+16:00:25 DEBU topology file found: lab.clab.yml
+16:00:25 DEBU Group membership check passed
+16:00:25 DEBU Changed running UIDs to UID: 0 GID: 1000
+16:00:25 DEBU Obtained root privileges
+16:00:25 INFO Containerlab started version=0.75.0
+16:00:25 DEBU env runtime var value is 
+16:00:25 DEBU Running runtime.Init with params &{Timeout:2m0s GracefulShutdown:false Debug:true KeepMgmtNet:false VerifyLinkParams:<nil>} and &{Network: Bridge: IPv4Subnet: IPv4Gw: IPv4Range: IPv6Subnet: IPv6Gw: IPv6Range: MTU:0 ExternalAccess:<nil> DriverOpts:map[]}
+16:00:25 DEBU Runtime: Docker
+16:00:25 DEBU initialized a runtime with params &{config:{Timeout:120000000000 GracefulShutdown:false Debug:true KeepMgmtNet:false VerifyLinkParams:0xc000298218} Client:0xc00050a000 mgmt:0xc0004f5400 version:v29.5.0}
+16:00:25 DEBU interpreting topo "lab.clab.yml" as file path
+16:00:25 DEBU loading template variables...
+16:00:25 DEBU searching for template vars files
+16:00:25 DEBU template variables: <nil>
+16:00:25 DEBU topology:
+# Lesson 1: First Containerlab Topology
+# Two SR Linux nodes connected directly
+
+name: first-lab
+
+topology:
+  nodes:
+    # First SR Linux node
+    srl1:
+      kind: srl
+      image: ghcr.io/nokia/srlinux:24.10.1
+
+    # Second SR Linux node
+    srl2:
+      kind: srl
+      image: ghcr.io/nokia/srlinux:24.10.1
+
+  links:
+    # Connect srl1's ethernet-1/1 to srl2's ethernet-1/1
+    - endpoints: ["srl1:e1-1", "srl2:e1-1"]
+
+
+16:00:25 DEBU extractHostNodeInterfaceData: eps=[srl1:e1-1 srl2:e1-1] specialIndex=0 -> host=srl1 hostIf=e1-1 node=srl2 nodeIf=e1-1
+16:00:25 DEBU method initMgmtNetwork was called mgmt params &{Network: Bridge: IPv4Subnet: IPv4Gw: IPv4Range: IPv6Subnet: IPv6Gw: IPv6Range: MTU:0 ExternalAccess:<nil> DriverOpts:map[]}
+16:00:25 DEBU New mgmt params are &{Network:clab Bridge: IPv4Subnet:172.20.20.0/24 IPv4Gw: IPv4Range: IPv6Subnet:3fff:172:20:20::/64 IPv6Gw: IPv6Range: MTU:0 ExternalAccess:0xc000299030 DriverOpts:map[]}
+16:00:25 INFO Parsing & checking topology file=lab.clab.yml
+16:00:25 DEBU node config: &{ShortName:srl1 LongName:clab-first-lab-srl1 Fqdn:srl1.first-lab.io LabDir:/kubecraft/DrewElliot_kubecraft/lessons/clab/01-containerlab-primer/topology/clab-first-lab/srl1 Index:0 Group: Kind:srl StartupConfig: StartupDelay:0 EnforceStartupConfig:false SuppressStartupConfig:false AutoRemove:false RestartPolicy: ResStartupConfig: Config:<nil> NodeType: Position: License: Image:ghcr.io/nokia/srlinux:24.10.1 ImagePullPolicy:IfNotPresent Sysctls:map[] User: Entrypoint: Cmd: Exec:[] Env:map[NO_PROXY:localhost,127.0.0.1,::1,*.local,172.20.20.0/24,3fff:172:20:20::/64,srl1,srl2 no_proxy:localhost,127.0.0.1,::1,*.local,172.20.20.0/24,3fff:172:20:20::/64,srl1,srl2] Binds:[] Devices:[] CapAdd:[] ShmSize: PortBindings:map[] ResultingPortBindings:[] PortSet:map[] NetworkMode: PidMode: MgmtNet: MgmtIntf: MgmtIPv4Address: MgmtIPv4PrefixLength:0 MgmtIPv6Address: MgmtIPv6PrefixLength:0 MgmtIPv4Gateway: MgmtIPv6Gateway: MacAddress: ContainerID: TLSCert: TLSKey: TLSAnchor: Certificate:0xc00013bbf0 Healthcheck:<nil> Aliases:[] ExtraHosts:[] Labels:map[] Runtime: CPU:0 CPUSet: Memory: Credentials:{Username:admin Password:NokiaSrl1!} Extras:<nil> Stages:0xc00013bc20 DNS:0xc00031c500 IsRootNamespaceBased:false SkipUniquenessCheck:false Components:[] Tmpfs:map[]}
+16:00:25 DEBU node config: &{ShortName:srl2 LongName:clab-first-lab-srl2 Fqdn:srl2.first-lab.io LabDir:/kubecraft/DrewElliot_kubecraft/lessons/clab/01-containerlab-primer/topology/clab-first-lab/srl2 Index:1 Group: Kind:srl StartupConfig: StartupDelay:0 EnforceStartupConfig:false SuppressStartupConfig:false AutoRemove:false RestartPolicy: ResStartupConfig: Config:<nil> NodeType: Position: License: Image:ghcr.io/nokia/srlinux:24.10.1 ImagePullPolicy:IfNotPresent Sysctls:map[] User: Entrypoint: Cmd: Exec:[] Env:map[NO_PROXY:localhost,127.0.0.1,::1,*.local,172.20.20.0/24,3fff:172:20:20::/64,srl1,srl2 no_proxy:localhost,127.0.0.1,::1,*.local,172.20.20.0/24,3fff:172:20:20::/64,srl1,srl2] Binds:[] Devices:[] CapAdd:[] ShmSize: PortBindings:map[] ResultingPortBindings:[] PortSet:map[] NetworkMode: PidMode: MgmtNet: MgmtIntf: MgmtIPv4Address: MgmtIPv4PrefixLength:0 MgmtIPv6Address: MgmtIPv6PrefixLength:0 MgmtIPv4Gateway: MgmtIPv6Gateway: MacAddress: ContainerID: TLSCert: TLSKey: TLSAnchor: Certificate:0xc000222e10 Healthcheck:<nil> Aliases:[] ExtraHosts:[] Labels:map[] Runtime: CPU:0 CPUSet: Memory: Credentials:{Username:admin Password:NokiaSrl1!} Extras:<nil> Stages:0xc000222e70 DNS:0xc00031d6d0 IsRootNamespaceBased:false SkipUniquenessCheck:false Components:[] Tmpfs:map[]}
+16:00:25 DEBU Error opening host DNS config run/systemd/resolve/resolv.conf: open run/systemd/resolve/resolv.conf: no such file or directory
+16:00:25 DEBU Number of Node workers: 2
+16:00:25 DEBU lab Conf: &{Name:first-lab Prefix:0xc00049df60 Mgmt:0xc0004f5400 Settings:<nil> Topology:0xc000262180 Debug:true}
+16:00:25 DEBU Checking if docker network "clab" exists
+16:00:25 DEBU Network does not exist name=clab
+16:00:25 INFO Creating docker network name=clab IPv4 subnet=172.20.20.0/24 IPv6 subnet=3fff:172:20:20::/64 MTU=0
+16:00:25 DEBU Using Docker version 28 or later, enabling NAT unprotected mode on bridge
+16:00:25 DEBU Docker network "clab", bridge name "br-09a7e7122393"
+16:00:25 DEBU Disable RPF check on the docker host
+16:00:25 DEBU Enable LLDP on the linux bridge br-09a7e7122393
+16:00:25 DEBU nftables: ip6 address family generally supported
+16:00:25 DEBU nftables: ip6 docker is supported
+16:00:25 DEBU using nf_tables as the firewall interface
+16:00:25 DEBU Installing iptables rules for interface "br-09a7e7122393", direction out, family ipv4
+16:00:25 DEBU Installing iptables rules for interface "br-09a7e7122393", direction out, family ipv6
+16:00:25 DEBU Installing iptables rules for interface "br-09a7e7122393", direction in, family ipv4
+16:00:25 DEBU Installing iptables rules for interface "br-09a7e7122393", direction in, family ipv6
+16:00:25 DEBU kernel version: 6.12.88+deb13-amd64
+
+16:00:25 DEBU kernel version: 6.12.88+deb13-amd64
+
+16:00:25 DEBU Looking up ghcr.io/nokia/srlinux:24.10.1 Docker image
+16:00:25 DEBU Image ghcr.io/nokia/srlinux:24.10.1 present, skip pulling
+16:00:25 DEBU kernel module "ip_tables" is already loaded
+16:00:25 DEBU kernel module "ip6_tables" is already loaded
+16:00:25 INFO Creating lab directory path=/kubecraft/DrewElliot_kubecraft/lessons/clab/01-containerlab-primer/topology/clab-first-lab
+16:00:25 DEBU SUDO_UID env var is not set, using current user home dir: /home/rb
+16:00:25 DEBU SUDO_UID env var is not set, using current user home dir: /home/rb
+16:00:25 DEBU Loaded public key ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICP/0cARswepuRgXr/uA90XdKe6BVmKUN9UXKtKa5qxD rb@kc-debian13-test00-Klon
+16:00:25 DEBU SSH_AUTH_SOCK not set, skipping pubkey fetching
+16:00:25 DEBU Dependencies:
+srl1 -> [  ]
+srl2 -> [  ]
+16:00:25 DEBU - cycle check round 1 - 
+srl2 <- [  ]
+srl1 <- [  ]
+16:00:25 DEBU node creation graph is successfully validated as being acyclic
+16:00:25 DEBU Stage Change: Enter Wait -> srl2 - create
+16:00:25 DEBU Stage Change: Enter Go -> srl2 - create
+16:00:25 DEBU Stage Change: Enter Wait -> srl1 - create
+16:00:25 DEBU Stage Change: Enter Go -> srl1 - create
+16:00:25 DEBU Worker 1 received node: &{ShortName:srl2 LongName:clab-first-lab-srl2 Fqdn:srl2.first-lab.io LabDir:/kubecraft/DrewElliot_kubecraft/lessons/clab/01-containerlab-primer/topology/clab-first-lab/srl2 Index:1 Group: Kind:srl StartupConfig: StartupDelay:0 EnforceStartupConfig:false SuppressStartupConfig:false AutoRemove:false RestartPolicy: ResStartupConfig: Config:0xc0004a6440 NodeType:ixr-d2l Position: License: Image:ghcr.io/nokia/srlinux:24.10.1 ImagePullPolicy:IfNotPresent Sysctls:map[net.ipv4.ip_forward:0 net.ipv6.conf.all.accept_dad:0 net.ipv6.conf.all.autoconf:0 net.ipv6.conf.all.disable_ipv6:0 net.ipv6.conf.default.accept_dad:0 net.ipv6.conf.default.autoconf:0] User:0:0 Entrypoint: Cmd:sudo -E bash -c 'touch /.dockerenv && /opt/srlinux/bin/sr_linux' Exec:[] Env:map[CLAB_LABEL_CLAB_NODE_GROUP: CLAB_LABEL_CLAB_NODE_KIND:srl CLAB_LABEL_CLAB_NODE_LAB_DIR:/kubecraft/DrewElliot_kubecraft/lessons/clab/01-containerlab-primer/topology/clab-first-lab/srl2 CLAB_LABEL_CLAB_NODE_LONGNAME:clab-first-lab-srl2 CLAB_LABEL_CLAB_NODE_NAME:srl2 CLAB_LABEL_CLAB_NODE_TYPE:ixr-d2l CLAB_LABEL_CLAB_OWNER:rb CLAB_LABEL_CLAB_TOPO_FILE:/kubecraft/DrewElliot_kubecraft/lessons/clab/01-containerlab-primer/topology/lab.clab.yml CLAB_LABEL_CONTAINERLAB:first-lab NO_PROXY:localhost,127.0.0.1,::1,*.local,172.20.20.0/24,3fff:172:20:20::/64,srl1,srl2 SRLINUX:1 no_proxy:localhost,127.0.0.1,::1,*.local,172.20.20.0/24,3fff:172:20:20::/64,srl1,srl2] Binds:[/kubecraft/DrewElliot_kubecraft/lessons/clab/01-containerlab-primer/topology/clab-first-lab/srl2/config:/etc/opt/srlinux/:rw /kubecraft/DrewElliot_kubecraft/lessons/clab/01-containerlab-primer/topology/clab-first-lab/srl2/topology.yml:/tmp/topology.yml:ro] Devices:[] CapAdd:[] ShmSize: PortBindings:map[] ResultingPortBindings:[] PortSet:map[] NetworkMode: PidMode: MgmtNet: MgmtIntf: MgmtIPv4Address: MgmtIPv4PrefixLength:0 MgmtIPv6Address: MgmtIPv6PrefixLength:0 MgmtIPv4Gateway: MgmtIPv6Gateway: MacAddress: ContainerID: TLSCert: TLSKey: TLSAnchor: Certificate:0xc000222e10 Healthcheck:<nil> Aliases:[] ExtraHosts:[] Labels:map[clab-mgmt-net-bridge:br-09a7e7122393 clab-node-group: clab-node-kind:srl clab-node-lab-dir:/kubecraft/DrewElliot_kubecraft/lessons/clab/01-containerlab-primer/topology/clab-first-lab/srl2 clab-node-longname:clab-first-lab-srl2 clab-node-name:srl2 clab-node-type:ixr-d2l clab-owner:rb clab-topo-file:/kubecraft/DrewElliot_kubecraft/lessons/clab/01-containerlab-primer/topology/lab.clab.yml containerlab:first-lab] Runtime: CPU:0 CPUSet: Memory: Credentials:{Username:admin Password:NokiaSrl1!} Extras:<nil> Stages:0xc000222e70 DNS:0xc00031d6d0 IsRootNamespaceBased:false SkipUniquenessCheck:false Components:[] Tmpfs:map[/run/netns:rw,nosuid,nodev,noexec]}
+16:00:25 DEBU Worker 0 received node: &{ShortName:srl1 LongName:clab-first-lab-srl1 Fqdn:srl1.first-lab.io LabDir:/kubecraft/DrewElliot_kubecraft/lessons/clab/01-containerlab-primer/topology/clab-first-lab/srl1 Index:0 Group: Kind:srl StartupConfig: StartupDelay:0 EnforceStartupConfig:false SuppressStartupConfig:false AutoRemove:false RestartPolicy: ResStartupConfig: Config:0xc0004a6300 NodeType:ixr-d2l Position: License: Image:ghcr.io/nokia/srlinux:24.10.1 ImagePullPolicy:IfNotPresent Sysctls:map[net.ipv4.ip_forward:0 net.ipv6.conf.all.accept_dad:0 net.ipv6.conf.all.autoconf:0 net.ipv6.conf.all.disable_ipv6:0 net.ipv6.conf.default.accept_dad:0 net.ipv6.conf.default.autoconf:0] User:0:0 Entrypoint: Cmd:sudo -E bash -c 'touch /.dockerenv && /opt/srlinux/bin/sr_linux' Exec:[] Env:map[CLAB_LABEL_CLAB_NODE_GROUP: CLAB_LABEL_CLAB_NODE_KIND:srl CLAB_LABEL_CLAB_NODE_LAB_DIR:/kubecraft/DrewElliot_kubecraft/lessons/clab/01-containerlab-primer/topology/clab-first-lab/srl1 CLAB_LABEL_CLAB_NODE_LONGNAME:clab-first-lab-srl1 CLAB_LABEL_CLAB_NODE_NAME:srl1 CLAB_LABEL_CLAB_NODE_TYPE:ixr-d2l CLAB_LABEL_CLAB_OWNER:rb CLAB_LABEL_CLAB_TOPO_FILE:/kubecraft/DrewElliot_kubecraft/lessons/clab/01-containerlab-primer/topology/lab.clab.yml CLAB_LABEL_CONTAINERLAB:first-lab NO_PROXY:localhost,127.0.0.1,::1,*.local,172.20.20.0/24,3fff:172:20:20::/64,srl1,srl2 SRLINUX:1 no_proxy:localhost,127.0.0.1,::1,*.local,172.20.20.0/24,3fff:172:20:20::/64,srl1,srl2] Binds:[/kubecraft/DrewElliot_kubecraft/lessons/clab/01-containerlab-primer/topology/clab-first-lab/srl1/config:/etc/opt/srlinux/:rw /kubecraft/DrewElliot_kubecraft/lessons/clab/01-containerlab-primer/topology/clab-first-lab/srl1/topology.yml:/tmp/topology.yml:ro] Devices:[] CapAdd:[] ShmSize: PortBindings:map[] ResultingPortBindings:[] PortSet:map[] NetworkMode: PidMode: MgmtNet: MgmtIntf: MgmtIPv4Address: MgmtIPv4PrefixLength:0 MgmtIPv6Address: MgmtIPv6PrefixLength:0 MgmtIPv4Gateway: MgmtIPv6Gateway: MacAddress: ContainerID: TLSCert: TLSKey: TLSAnchor: Certificate:0xc00013bbf0 Healthcheck:<nil> Aliases:[] ExtraHosts:[] Labels:map[clab-mgmt-net-bridge:br-09a7e7122393 clab-node-group: clab-node-kind:srl clab-node-lab-dir:/kubecraft/DrewElliot_kubecraft/lessons/clab/01-containerlab-primer/topology/clab-first-lab/srl1 clab-node-longname:clab-first-lab-srl1 clab-node-name:srl1 clab-node-type:ixr-d2l clab-owner:rb clab-topo-file:/kubecraft/DrewElliot_kubecraft/lessons/clab/01-containerlab-primer/topology/lab.clab.yml containerlab:first-lab] Runtime: CPU:0 CPUSet: Memory: Credentials:{Username:admin Password:NokiaSrl1!} Extras:<nil> Stages:0xc00013bc20 DNS:0xc00031c500 IsRootNamespaceBased:false SkipUniquenessCheck:false Components:[] Tmpfs:map[/run/netns:rw,nosuid,nodev,noexec]}
+16:00:25 DEBU Creating directory structure for SRL container: srl1
+16:00:25 DEBU {1a:51:00:00:00:00} /kubecraft/DrewElliot_kubecraft/lessons/clab/01-containerlab-primer/topology/clab-first-lab/srl1/topology.yml="missing value"
+16:00:25 DEBU Creating directory structure for SRL container: srl2
+16:00:25 DEBU {1a:23:01:00:00:00} /kubecraft/DrewElliot_kubecraft/lessons/clab/01-containerlab-primer/topology/clab-first-lab/srl2/topology.yml="missing value"
+16:00:25 DEBU configuration template for node srl1 is empty, skipping startup config file generation
+16:00:25 INFO Creating container name=srl1
+16:00:25 DEBU configuration template for node srl2 is empty, skipping startup config file generation
+16:00:25 INFO Creating container name=srl2
+16:00:25 DEBU Container "srl1" create response: {ID:917e5b68d31206c5df2c9fb5efd369be746db9abbbe6dbedbc44498009846f28 Warnings:[]}
+16:00:25 DEBU Start container: "clab-first-lab-srl1"
+16:00:25 DEBU Container "srl2" create response: {ID:9314a6c1df6bdebfae9cb981c171c55a5723ace8180e9a09e0d3eff41a076a7e Warnings:[]}
+16:00:25 DEBU Start container: "clab-first-lab-srl2"
+16:00:25 DEBU Container started: "clab-first-lab-srl1"
+16:00:25 DEBU Filter key: name, filter value: ^clab-first-lab-srl1$
+16:00:25 DEBU StateChange: Done -> srl1 - create
+16:00:25 DEBU Stage Change: Enter Wait -> srl1 - create-links
+16:00:25 DEBU Stage Change: Enter Go -> srl1 - create-links
+16:00:25 DEBU Creating Endpoint: srl1:e1-1 ( --> srl2:e1-1 )
+16:00:25 DEBU StateChange: Done -> srl1 - create-links
+16:00:25 DEBU Stage Change: Enter Wait -> srl1 - configure
+16:00:25 DEBU Stage Change: Enter Go -> srl1 - configure
+16:00:25 INFO Running postdeploy actions kind=srl node=srl1
+16:00:25 DEBU failed loading csr /kubecraft/DrewElliot_kubecraft/lessons/clab/01-containerlab-primer/topology/clab-first-lab/.tls/srl1/srl1.csr, continuing anyways
+16:00:25 DEBU Method GetHostsPath was called with a resulting path "/var/lib/docker/containers/917e5b68d31206c5df2c9fb5efd369be746db9abbbe6dbedbc44498009846f28/hosts"
+16:00:25 DEBU Waiting for SR Linux node "srl1" to boot...
+16:00:25 DEBU Container started: "clab-first-lab-srl2"
+16:00:25 DEBU Filter key: name, filter value: ^clab-first-lab-srl2$
+16:00:25 DEBU /clab-first-lab-srl1 exec created clab-first-lab-srl1
+16:00:25 DEBU /clab-first-lab-srl1 exec attached clab-first-lab-srl1
+16:00:25 DEBU StateChange: Done -> srl2 - create
+16:00:25 DEBU Stage Change: Enter Wait -> srl2 - create-links
+16:00:25 DEBU Stage Change: Enter Go -> srl2 - create-links
+16:00:25 DEBU Assigning Endpoint: srl2:e1-1 ( --> srl1:e1-1 )
+16:00:25 INFO Created link: srl1:e1-1 ▪┄┄▪ srl2:e1-1
+16:00:25 DEBU StateChange: Done -> srl2 - create-links
+16:00:25 DEBU Stage Change: Enter Wait -> srl2 - configure
+16:00:25 DEBU Stage Change: Enter Go -> srl2 - configure
+16:00:25 INFO Running postdeploy actions kind=srl node=srl2
+16:00:25 DEBU failed loading csr /kubecraft/DrewElliot_kubecraft/lessons/clab/01-containerlab-primer/topology/clab-first-lab/.tls/srl2/srl2.csr, continuing anyways
+16:00:25 DEBU Method GetHostsPath was called with a resulting path "/var/lib/docker/containers/9314a6c1df6bdebfae9cb981c171c55a5723ace8180e9a09e0d3eff41a076a7e/hosts"
+16:00:25 DEBU Waiting for SR Linux node "srl2" to boot...
+16:00:25 DEBU /clab-first-lab-srl2 exec created clab-first-lab-srl2
+16:00:25 DEBU /clab-first-lab-srl2 exec attached clab-first-lab-srl2
+16:00:26 DEBU mgmt_server status check failed, output: 
+Cmd: /opt/srlinux/bin/sr_cli -d info from state system app-management application mgmt_server state | grep running
+ReturnCode: 1
+Stderr: "14:00:26.486 [WARNING] (MainThread) Failed to contact the AAA server. Further communication will be blackholed until connection succeeds\nParsing error: Unknown token 'system'. Options are ['#', '>', '>>', 'depth', 'detail', 'flat', 'with-context']\n"
+16:00:27 DEBU mgmt_server status check failed, output: 
+Cmd: /opt/srlinux/bin/sr_cli -d info from state system app-management application mgmt_server state | grep running
+ReturnCode: 1
+Stderr: "14:00:26.600 [WARNING] (MainThread) Failed to contact the AAA server. Further communication will be blackholed until connection succeeds\nParsing error: Unknown token 'system'. Options are ['#', '>', '>>', 'depth', 'detail', 'flat', 'with-context']\n"
+16:00:27 DEBU /clab-first-lab-srl2 exec created clab-first-lab-srl2
+16:00:27 DEBU /clab-first-lab-srl2 exec attached clab-first-lab-srl2
+16:00:28 DEBU /clab-first-lab-srl1 exec created clab-first-lab-srl1
+16:00:28 DEBU /clab-first-lab-srl1 exec attached clab-first-lab-srl1
+16:00:28 DEBU mgmt_server status check failed, output: 
+Cmd: /opt/srlinux/bin/sr_cli -d info from state system app-management application mgmt_server state | grep running
+ReturnCode: 1
+Stdout: "Warning: connection with server is down\n"
+Stderr: "14:00:28.501 [WARNING] (MainThread) Failed to contact the AAA server. Further communication will be blackholed until connection succeeds\nParsing error: Unknown token 'system'. Options are ['#', '>', '>>', 'depth', 'detail', 'flat', 'with-context']\n"
+16:00:28 DEBU mgmt_server status check failed, output: 
+Cmd: /opt/srlinux/bin/sr_cli -d info from state system app-management application mgmt_server state | grep running
+ReturnCode: 139
+Stdout: "Warning: connection with server is down\n"
+Stderr: "14:00:28.705 [WARNING] (MainThread) Failed to contact the AAA server. Further communication will be blackholed until connection succeeds\nParsing error: Unknown token 'system'. Options are ['#', '>', '>>', 'depth', 'detail', 'flat', 'with-context']\n/opt/srlinux/bin/sr_cli: line 148:  1412 Segmentation fault      PYTHONIOENCODING=UTF-8 python \"${bootstrap_file}\" \"${arguments[@]}\" 3>&2 2> /dev/null\n"
+16:00:29 DEBU /clab-first-lab-srl2 exec created clab-first-lab-srl2
+16:00:29 DEBU /clab-first-lab-srl2 exec attached clab-first-lab-srl2
+16:00:29 DEBU /clab-first-lab-srl1 exec created clab-first-lab-srl1
+16:00:29 DEBU /clab-first-lab-srl1 exec attached clab-first-lab-srl1
+16:00:33 DEBU mgmt_server status check failed, output: 
+Cmd: /opt/srlinux/bin/sr_cli -d info from state system app-management application mgmt_server state | grep running
+ReturnCode: 1
+Stderr: "14:00:30.386 [WARNING] (MainThread) Failed to contact the AAA server. Further communication will be blackholed until connection succeeds\nParsing error: Unknown token 'system'. Options are ['#', '>', '>>', 'depth', 'detail', 'flat', 'with-context']\n"
+16:00:33 DEBU mgmt_server status check failed, output: 
+Cmd: /opt/srlinux/bin/sr_cli -d info from state system app-management application mgmt_server state | grep running
+ReturnCode: 1
+Stdout: "Warning: connection with server is down\n"
+Stderr: "14:00:31.539 [WARNING] (MainThread) Failed to contact the AAA server. Further communication will be blackholed until connection succeeds\nParsing error: Unknown token 'system'. Options are ['#', '>', '>>', 'depth', 'detail', 'flat', 'with-context']\n"
+16:00:34 DEBU /clab-first-lab-srl2 exec created clab-first-lab-srl2
+16:00:34 DEBU /clab-first-lab-srl2 exec attached clab-first-lab-srl2
+16:00:34 DEBU mgmt_server status check failed, output: 
+Cmd: /opt/srlinux/bin/sr_cli -d info from state system app-management application mgmt_server state | grep running
+ReturnCode: 1
+Stderr: "Parsing error: Unknown token 'system'. Options are ['#', '>', '>>', 'depth', 'detail', 'flat', 'with-context']\n"
+16:00:34 DEBU /clab-first-lab-srl1 exec created clab-first-lab-srl1
+16:00:34 DEBU /clab-first-lab-srl1 exec attached clab-first-lab-srl1
+16:00:35 DEBU /clab-first-lab-srl2 exec created clab-first-lab-srl2
+16:00:35 DEBU /clab-first-lab-srl2 exec attached clab-first-lab-srl2
+16:00:35 DEBU mgmt_server status check failed, output: 
+Cmd: /opt/srlinux/bin/sr_cli -d info from state system app-management application mgmt_server state | grep running
+ReturnCode: 1
+Stderr: "Parsing error: Unknown token 'system'. Options are ['#', '>', '>>', 'depth', 'detail', 'flat', 'with-context']\n"
+16:00:36 DEBU /clab-first-lab-srl1 exec created clab-first-lab-srl1
+16:00:36 DEBU /clab-first-lab-srl1 exec attached clab-first-lab-srl1
+16:00:38 DEBU mgmt_server status check failed, output: 
+Cmd: /opt/srlinux/bin/sr_cli -d info from state system app-management application mgmt_server state | grep running
+ReturnCode: 1
+Stderr: "Error: Not yet ready - initial config loading has not finished\n"
+16:00:38 DEBU mgmt_server status check failed, output: 
+Cmd: /opt/srlinux/bin/sr_cli -d info from state system app-management application mgmt_server state | grep running
+ReturnCode: 1
+Stderr: "Error: Not yet ready - initial config loading has not finished\n"
+16:00:39 DEBU /clab-first-lab-srl2 exec created clab-first-lab-srl2
+16:00:39 DEBU /clab-first-lab-srl2 exec attached clab-first-lab-srl2
+16:00:39 DEBU mgmt_server status check failed, output: 
+Cmd: /opt/srlinux/bin/sr_cli -d info from state system app-management application mgmt_server state | grep running
+ReturnCode: 1
+Stderr: "Error: Not yet ready - initial config loading has not finished\n"
+16:00:39 DEBU /clab-first-lab-srl1 exec created clab-first-lab-srl1
+16:00:39 DEBU /clab-first-lab-srl1 exec attached clab-first-lab-srl1
+16:00:40 DEBU /clab-first-lab-srl2 exec created clab-first-lab-srl2
+16:00:40 DEBU /clab-first-lab-srl2 exec attached clab-first-lab-srl2
+16:00:43 DEBU /clab-first-lab-srl1 exec created clab-first-lab-srl1
+16:00:43 DEBU /clab-first-lab-srl1 exec attached clab-first-lab-srl1
+16:00:43 DEBU Node srl1 is ready to accept configs
+16:00:43 DEBU /clab-first-lab-srl1 exec created clab-first-lab-srl1
+16:00:43 DEBU /clab-first-lab-srl1 exec attached clab-first-lab-srl1
+16:00:44 DEBU /clab-first-lab-srl2 exec created clab-first-lab-srl2
+16:00:44 DEBU /clab-first-lab-srl2 exec attached clab-first-lab-srl2
+16:00:44 DEBU Node srl2 is ready to accept configs
+16:00:44 DEBU /clab-first-lab-srl2 exec created clab-first-lab-srl2
+16:00:44 DEBU /clab-first-lab-srl2 exec attached clab-first-lab-srl2
+16:00:45 DEBU SR Linux node srl1 extracted raw version. stdout:             version v24.10.1-492-gf8858c5836
+, stderr: 
+16:00:45 DEBU /clab-first-lab-srl1 exec created clab-first-lab-srl1
+16:00:45 DEBU /clab-first-lab-srl1 exec attached clab-first-lab-srl1
+16:00:45 DEBU SR Linux node srl2 extracted raw version. stdout:             version v24.10.1-492-gf8858c5836
+, stderr: 
+16:00:45 DEBU /clab-first-lab-srl2 exec created clab-first-lab-srl2
+16:00:45 DEBU /clab-first-lab-srl2 exec attached clab-first-lab-srl2
+16:00:46 DEBU SR Linux node srl2 OpenConfig feature output. stdout:             openconfig
+, stderr: 
+16:00:46 DEBU StateChange: Done -> srl2 - configure
+16:00:46 DEBU Worker 1 terminating...
+16:00:46 DEBU SR Linux node srl1 OpenConfig feature output. stdout:             openconfig
+, stderr: 
+16:00:46 DEBU StateChange: Done -> srl1 - configure
+16:00:46 DEBU Worker 0 terminating...
+16:00:46 DEBU Exported topology data using  template
+16:00:46 DEBU Filter key: name, filter value: ^clab-first-lab-srl1$
+16:00:46 DEBU Filter key: name, filter value: ^clab-first-lab-srl2$
+16:00:46 INFO Adding host entries path=/etc/hosts
+16:00:46 DEBU Filter key: name, filter value: ^clab-first-lab-srl1$
+16:00:46 DEBU Filter key: name, filter value: ^clab-first-lab-srl2$
+16:00:46 INFO Adding SSH config for nodes path=/etc/ssh/ssh_config.d/clab-first-lab.conf
+[1m╭[0m[1m─────────────────────[0m[1m┬[0m[1m───────────────────────────────[0m[1m┬[0m[1m─────────[0m[1m┬[0m[1m───────────────────[0m[1m╮[0m
+[1m│[0m[1m         Name        [0m[1m│[0m[1m           Kind/Image          [0m[1m│[0m[1m  State  [0m[1m│[0m[1m   IPv4/6 Address  [0m[1m│[0m
+[1m├[0m[1m─────────────────────[0m[1m┼[0m[1m───────────────────────────────[0m[1m┼[0m[1m─────────[0m[1m┼[0m[1m───────────────────[0m[1m┤[0m
+│ clab-first-lab-srl1 │ srl                           │ running │ 172.20.20.2       │
+│                     │ ghcr.io/nokia/srlinux:24.10.1 │         │ 3fff:172:20:20::2 │
+├─────────────────────┼───────────────────────────────┼─────────┼───────────────────┤
+│ clab-first-lab-srl2 │ srl                           │ running │ 172.20.20.3       │
+│                     │ ghcr.io/nokia/srlinux:24.10.1 │         │ 3fff:172:20:20::3 │
+╰─────────────────────┴───────────────────────────────┴─────────┴───────────────────╯

@@ -1,0 +1,195 @@
+{
+  "name": "ip-fundamentals",
+  "type": "clab",
+  "clab": {
+    "config": {
+      "prefix": "clab",
+      "mgmt": {
+        "network": "clab",
+        "bridge": "br-2fd70830179f",
+        "ipv4-subnet": "172.20.20.0/24",
+        "ipv4-gw": "172.20.20.1",
+        "ipv6-subnet": "3fff:172:20:20::/64",
+        "ipv6-gw": "3fff:172:20:20::1",
+        "external-access": true
+      }
+    }
+  },
+  "ssh-pub-keys": ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO7gGSyFnOGopTEqJovd0kcd0KP/WngtW8+Epe9V5pxD","ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCmJxXkj/rd8pmc+UEyDuma0T2xvV900hySJjZMl9bZS1L4ZBd6+Lmd0mjIfrHHVB40yZCGUi7QK4eaArsGOo5RtZ2CGKj7zBOclpXBfseAbT73W+L3C30PcHnAtgFtOqaR8Mbx9NidSSWLcKafH8G8nJUEF2fx4+xsGKaZxIOzPhu742eqWBbjyPzplLAa18aZwQWWWTC/7cibGm89LjW2CrnJrYdVz8LwVTEN7Y+i7jFGKcufEhshoxhdadUsaNF8uBonz3L5d3j6tDuKl+sE5CIWFbwUJ/F+6M9RNG+vmOm+3MR87TaeoEC4cZXH95N667QHQG0bb7juWcvbD/HjpgArt1K+t31KfLIsLVGhm7uOZTAK5X6IxmzIwf4iGvEclWjEDfSkkL6wLNVKgtqK3qhHT/vFeqnHSNizSpDN8CHuMi5d4oUOjUSSUVFXPzeAWla0pk6agS79C9hpS2aUN21qAM9cW6pI8lENdB3Y+6veQ6h7ZTVQzPvtfh4cbC8="],
+  "nodes": {
+    "host1": {
+      "index": "0",
+      "shortname": "host1",
+      "longname": "clab-ip-fundamentals-host1",
+      "fqdn": "host1.ip-fundamentals.io",
+      "group": "",
+      "labdir": "/kubecraft/DrewElliot_kubecraft/lessons/clab/02-ip-fundamentals/topology/clab-ip-fundamentals/host1",
+      "kind": "linux",
+      "image": "alpine:3.20",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.3",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::5",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-2fd70830179f",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/kubecraft/DrewElliot_kubecraft/lessons/clab/02-ip-fundamentals/topology/clab-ip-fundamentals/host1",
+        "clab-node-longname": "clab-ip-fundamentals-host1",
+        "clab-node-name": "host1",
+        "clab-node-type": "",
+        "clab-owner": "root",
+        "clab-topo-file": "/kubecraft/DrewElliot_kubecraft/lessons/clab/02-ip-fundamentals/topology/lab.clab.yml",
+        "containerlab": "ip-fundamentals"
+      },
+      "port-bindings": [
+      ]
+    },
+    "host2": {
+      "index": "1",
+      "shortname": "host2",
+      "longname": "clab-ip-fundamentals-host2",
+      "fqdn": "host2.ip-fundamentals.io",
+      "group": "",
+      "labdir": "/kubecraft/DrewElliot_kubecraft/lessons/clab/02-ip-fundamentals/topology/clab-ip-fundamentals/host2",
+      "kind": "linux",
+      "image": "alpine:3.20",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.2",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::4",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-2fd70830179f",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/kubecraft/DrewElliot_kubecraft/lessons/clab/02-ip-fundamentals/topology/clab-ip-fundamentals/host2",
+        "clab-node-longname": "clab-ip-fundamentals-host2",
+        "clab-node-name": "host2",
+        "clab-node-type": "",
+        "clab-owner": "root",
+        "clab-topo-file": "/kubecraft/DrewElliot_kubecraft/lessons/clab/02-ip-fundamentals/topology/lab.clab.yml",
+        "containerlab": "ip-fundamentals"
+      },
+      "port-bindings": [
+      ]
+    },
+    "srl1": {
+      "index": "2",
+      "shortname": "srl1",
+      "longname": "clab-ip-fundamentals-srl1",
+      "fqdn": "srl1.ip-fundamentals.io",
+      "group": "",
+      "labdir": "/kubecraft/DrewElliot_kubecraft/lessons/clab/02-ip-fundamentals/topology/clab-ip-fundamentals/srl1",
+      "kind": "srl",
+      "image": "ghcr.io/nokia/srlinux:24.10.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.11",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::2",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "1a:98:02:00:00:00",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-2fd70830179f",
+        "clab-node-group": "",
+        "clab-node-kind": "srl",
+        "clab-node-lab-dir": "/kubecraft/DrewElliot_kubecraft/lessons/clab/02-ip-fundamentals/topology/clab-ip-fundamentals/srl1",
+        "clab-node-longname": "clab-ip-fundamentals-srl1",
+        "clab-node-name": "srl1",
+        "clab-node-type": "ixr-d2l",
+        "clab-owner": "root",
+        "clab-topo-file": "/kubecraft/DrewElliot_kubecraft/lessons/clab/02-ip-fundamentals/topology/lab.clab.yml",
+        "containerlab": "ip-fundamentals"
+      },
+      "port-bindings": [
+      ]
+    },
+    "srl2": {
+      "index": "3",
+      "shortname": "srl2",
+      "longname": "clab-ip-fundamentals-srl2",
+      "fqdn": "srl2.ip-fundamentals.io",
+      "group": "",
+      "labdir": "/kubecraft/DrewElliot_kubecraft/lessons/clab/02-ip-fundamentals/topology/clab-ip-fundamentals/srl2",
+      "kind": "srl",
+      "image": "ghcr.io/nokia/srlinux:24.10.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.12",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::3",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "1a:02:03:00:00:00",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-2fd70830179f",
+        "clab-node-group": "",
+        "clab-node-kind": "srl",
+        "clab-node-lab-dir": "/kubecraft/DrewElliot_kubecraft/lessons/clab/02-ip-fundamentals/topology/clab-ip-fundamentals/srl2",
+        "clab-node-longname": "clab-ip-fundamentals-srl2",
+        "clab-node-name": "srl2",
+        "clab-node-type": "ixr-d2l",
+        "clab-owner": "root",
+        "clab-topo-file": "/kubecraft/DrewElliot_kubecraft/lessons/clab/02-ip-fundamentals/topology/lab.clab.yml",
+        "containerlab": "ip-fundamentals"
+      },
+      "port-bindings": [
+      ]
+    }
+  },
+  "links": [
+    {
+      "endpoints": {
+        "a": {
+          "node": "host1",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:56:0d:1e",
+          "peer": "z"
+        },
+        "z": {
+          "node": "srl1",
+          "interface": "e1-1",
+          "mac": "aa:c1:ab:37:7d:2c",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "srl1",
+          "interface": "e1-2",
+          "mac": "aa:c1:ab:fa:1d:15",
+          "peer": "z"
+        },
+        "z": {
+          "node": "srl2",
+          "interface": "e1-1",
+          "mac": "aa:c1:ab:f5:e4:f5",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "srl2",
+          "interface": "e1-2",
+          "mac": "aa:c1:ab:49:cf:d2",
+          "peer": "z"
+        },
+        "z": {
+          "node": "host2",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:0e:f5:9c",
+          "peer": "a"
+        }
+      }
+    }
+  ]
+}

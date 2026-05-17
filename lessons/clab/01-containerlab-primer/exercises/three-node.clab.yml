@@ -1,7 +1,7 @@
 # Lesson 1: First Containerlab Topology
 # Two SR Linux nodes connected directly
 
-name: first-lab
+name: ex1threeNode-lab
 
 topology:
   nodes:
@@ -9,16 +9,18 @@ topology:
     srl1:
       kind: srl
       image: ghcr.io/nokia/srlinux:24.10.1
-      binds:
-        - /home/rb/.ssh/authorized_keys:/home/admin/.ssh/authorized_keys
 
     # Second SR Linux node
     srl2:
       kind: srl
       image: ghcr.io/nokia/srlinux:24.10.1
-      binds:
-        - /home/rb/.ssh/authorized_keys:/home/admin/.ssh/authorized_keys
+
+    # Third SR Linux node
+    srl3:
+      kind: srl
+      image: ghcr.io/nokia/srlinux:24.10.1
 
   links:
     # Connect srl1's ethernet-1/1 to srl2's ethernet-1/1
-    - endpoints: ["srl1:e1-1", "srl2:e1-1"]
+    - endpoints: ["srl1:e1-1", "srl2:e1-1"] 
+    - endpoints: ["srl2:e1-2", "srl3:e1-2"]
